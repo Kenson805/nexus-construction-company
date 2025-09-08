@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Nexus Construction Company - Civil Engineering Solutions</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+<style>
+  /* Reset and base */
+  *, *::before, *::after {
+    box-sizing: border-box;
+  }
+  body {
+    margin: 0;
+    font-family: 'Inter', sans-serif;
+    background-color: #ffffff;
+    color: #1f2937; /* dark slate gray */
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    min-height: 100vh;
+  }
+  a {
+    color: #dc2626; /* warm red accent */
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+  a:hover,
+  a:focus {
+    color: #b91c1c;
+    outline: none;
+  }
+  img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 12px;
+    display: block;
+  }
+  h1, h2, h3, h4 {
+    margin-top: 0;
+    color: #111827;
+    font-weight: 700;
+  }
+  /* Container with max width and padding for breathing room */
+  .container {
+    max-width: 1200px;
+    padding-left: 24px;
+    padding-right: 24px;
+    margin: 0 auto;
+  }
+  /* Header */
+  header {
+    position: sticky;
+    top: 0;
+    background-color: #fef2f2; /* light warm background */
+    border-bottom: 1px solid #fecaca;
+    z-index: 1000;
+    padding: 16px 0;
+  }
+  .header-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .logo {
+    font-size: 1.75rem;
+    font-weight: 900;
+    color: #dc2626;
+    letter-spacing: 0.06em;
+    user-select: none;
+  }
+  nav a {
+    font-weight: 600;
+    font-size: 1.05rem;
+    margin-left: 32px;
+    padding: 8px 0;
+    display: inline-block;
+  }
+  nav a:first-child {
+    margin-left: 0;
+  }
+
+  nav a.active,
+  nav a:hover {
+    border-bottom: 3px solid #dc2626;
+  }
+  /* Hero Section */
+  .hero {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg, #dc2626 0%, #b91c1c 100%);
+    color: white;
+    text-align: center;
+    padding: 120px 24px 130px 24px;
+    border-radius: 0 0 48px 48px;
+  }
+  .hero h1 {
+    font-size: 3.5rem;
+    max-width: 800px;
+    margin-bottom: 24px;
+    line-height: 1.1;
+  }
+  .hero p {
+    font-size: 1.25rem;
+    max-width: 640px;
+    margin-bottom: 48px;
+    font-weight: 500;
+  }
+  .btn-primary {
+    background: #fff;
+    color: #b91c1c;
+    font-weight: 700;
+    font-size: 1.1rem;
+    padding: 16px 48px;
+    border-radius: 40px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    box-shadow: 0 6px 12px rgba(220, 38, 38, 0.3);
+  }
+  .btn-primary:hover,
+  .btn-primary:focus {
+    background-color: #b91c1c;
+    color: #fef2f2;
+    outline: none;
+  }
+  /* Sections */
+  section {
+    padding: 80px 0 80px 0;
+  }
+  section h2 {
+    text-align: center;
+    font-size: 2.75rem;
+    margin-bottom: 48px;
+    color: #dc2626;
+  }
+  /* Grid layout for Materials and Equipment */
+  .grid-3 {
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(280px,1fr));
+    gap: 32px;
+    max-width: 1080px;
+    margin: 0 auto;
+  }
+  .card {
+    background: #fef2f2;
+    border-radius: 24px;
+    box-shadow: 0 6px 20px rgba(220, 38, 38, 0.15);
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.3s ease;
+    cursor: default;
+    padding: 24px;
+  }
+  .card:hover,
+  .card:focus-within {
+    transform: translateY(-8px);
+    box-shadow: 0 10px 34px rgba(220, 38, 38, 0.3);
+    outline: none;
+  }
+  .card img {
+    border-radius: 16px;
+    margin-bottom: 20px;
+  }
+  .card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 12px;
+    color: #991b1b;
+  }
+  .card p {
+    font-size: 1rem;
+    color: #4b5563; /* slate gray */
+    flex-grow: 1;
+  }
+  /* About Section */
+  .about-text {
+    max-width: 720px;
+    margin: 0 auto;
+    font-size: 1.15rem;
+    color: #374151;
+    line-height: 1.7;
+    text-align: center;
+  }
+  /* Contact Section */
+  form {
+    max-width: 600px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  label {
+    font-weight: 700;
+    color: #374151;
+  }
+  input[type="text"],
+  input[type="email"],
+  textarea {
+    padding: 12px 16px;
+    border-radius: 12px;
+    border: 2px solid #fca5a5; /* lighter red */
+    font-size: 1rem;
+    font-family: inherit;
+    resize: vertical;
+    transition: border-color 0.3s ease;
+  }
+  input[type="text"]:focus,
+  input[type="email"]:focus,
+  textarea:focus {
+    border-color: #dc2626;
+    outline: none;
+  }
+  textarea {
+    min-height: 120px;
+  }
+  button[type="submit"] {
+    align-self: center;
+    background-color: #dc2626;
+    color: white;
+    font-weight: 700;
+    font-size: 1.15rem;
+    padding: 16px 48px;
+    border-radius: 40px;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 6px 12px rgba(220, 38, 38, 0.4);
+    transition: background-color 0.3s ease;
+  }
+  button[type="submit"]:hover,
+  button[type="submit"]:focus {
+    background-color: #991b1b;
+    outline: none;
+  }
+
+  /* Footer */
+  footer {
+    background-color: #fef2f2;
+    color: #6b7280;
+    padding: 32px 24px;
+    text-align: center;
+    font-size: 0.9rem;
+    border-top: 1px solid #fecaca;
+  }
+
+  /* Responsive Nav Toggle */
+  @media (max-width: 768px) {
+    nav a {
+      margin-left: 20px;
+      font-size: 1rem;
+    }
+    .hero h1 {
+      font-size: 2.5rem;
+    }
+  }
+  @media (max-width: 480px) {
+    .hero h1 {
+      font-size: 1.9rem;
+    }
+    .card {
+      padding: 16px;
+    }
+  }
+</style>
+</head>
+<body>
+  <header role="banner">
+    <div class="container header-inner">
+      <div class="logo" aria-label="Nexus Construction Company Logo">Nexus Construction</div>
+      <nav role="navigation" aria-label="Primary navigation">
+        <a href="#materials" class="active" aria-current="page">Materials</a>
+        <a href="#equipment">Equipment</a>
+        <a href="#about">About Us</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" role="banner" aria-label="Hero section with company introduction">
+      <h1>Building the Future with Strength and Precision</h1>
+      <p>Innovative civil engineering solutions with premium construction materials and heavy equipment support.</p>
+      <button class="btn-primary" type="button" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})" aria-label="Contact Nexus Construction">Contact Us</button>
+    </section>
+
+    <section id="materials" aria-labelledby="materials-title">
+      <h2 id="materials-title">Construction Materials</h2>
+      <div class="grid-3">
+        <article class="card" tabindex="0" aria-label="Concrete material details">
+          <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/f2220b71-4c06-46ec-8146-04749c21df03.png" alt="Portland Concrete bags stacked on a construction site" loading="lazy" />
+          <h3>Portland Concrete</h3>
+          <p>High-quality Portland cement ideal for structural and foundational applications with exceptional durability and strength.</p>
+        </article>
+        <article class="card" tabindex="0" aria-label="Steel reinforcement bars details">
+          <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/fbad0bac-4fe2-43f3-9795-734f6c08c0f8.png" alt="Steel reinforcement bars arranged in bundles for construction use" loading="lazy" />
+          <h3>Steel Rebar</h3>
+          <p>Premium-grade reinforcing steel bars that provide tensile strength to concrete structures, ensuring stability and resistance to stresses.</p>
+        </article>
+        <article class="card" tabindex="0" aria-label="Aggregates for construction details">
+          <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/40051354-548d-4eda-bbe5-e032db280205.png" alt="Construction aggregates like gravel and crushed stones on-site" loading="lazy" />
+          <h3>Aggregates</h3>
+          <p>Crushed stone, gravel, and sand products sourced for concrete mix and fill, optimized for stability and compaction.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="equipment" aria-labelledby="equipment-title">
+      <h2 id="equipment-title">Construction Equipment</h2>
+      <div class="grid-3">
+        <article class="card" tabindex="0" aria-label="Excavator equipment details">
+          <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/e9a359d3-e03a-4777-9703-7a2b93245f7b.png" alt="Yellow excavator working on earthmoving at a construction site" loading="lazy" />
+          <h3>Excavators</h3>
+          <p>Versatile hydraulic excavators equipped to handle heavy-duty earthworks including digging, trenching, and material handling efficiently.</p>
+        </article>
+        <article class="card" tabindex="0" aria-label="Concrete mixer details">
+          <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/e559987d-25a4-4de3-858e-68989a97fb7f.png" alt="Concrete mixer truck ready for delivering concrete at construction site" loading="lazy" />
+          <h3>Concrete Mixers</h3>
+          <p>Mobile and stationary mixers engineered for consistent and high-quality concrete batching on site with efficiency and ease.</p>
+        </article>
+        <article class="card" tabindex="0" aria-label="Cranes for construction details">
+          <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/14d49422-6f95-4089-9497-a6fe153f2a1d.png" alt="Tower crane lifting building materials at urban construction project" loading="lazy" />
+          <h3>Cranes</h3>
+          <p>Heavy lifting equipment designed for vertical and horizontal transport of construction materials in large-scale projects.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="about" aria-labelledby="about-title" role="region">
+      <h2 id="about-title">About Nexus Construction</h2>
+      <p class="about-text">
+        Nexus Construction Company is a leading civil engineering firm dedicated to delivering innovative infrastructure solutions. With our expertise in premium construction materials and state-of-the-art equipment, we build projects that stand the test of time. Our team values safety, quality, and sustainability in every endeavor.
+      </p>
+    </section>
+
+    <section id="contact" aria-labelledby="contact-title" role="region">
+      <h2 id="contact-title">Contact Us</h2>
+      <form aria-label="contact form to reach Nexus Construction">
+        <label for="name">Name</label>
+        <input type="text" id="name" name="name" placeholder="Your full name" required autocomplete="name" />
+
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" placeholder="your.email@example.com" required autocomplete="email" />
+
+        <label for="message">Message</label>
+        <textarea id="message" name="message" placeholder="Write your message here..." required></textarea>
+
+        <button type="submit">Send Message</button>
+      </form>
+    </section>
+  </main>
+
+  <footer role="contentinfo">
+    &copy; 2024 Nexus Construction Company. All rights reserved.
+  </footer>
+
+</body>
+</html>
